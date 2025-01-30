@@ -22,7 +22,7 @@
 
     <button class="button">Login</button>
   </div>
-  @if(email.touched && email.dirty && form.invalid)
+  @if(email.touched && email.dirty && email.invalid)
   {
     <p class = "control-error">Invalid email address entered.</p>
   }
