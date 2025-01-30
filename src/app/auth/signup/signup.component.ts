@@ -12,20 +12,29 @@ export class SignupComponent {
   form = new FormGroup({
     email : new FormControl('',{
       validators: [Validators.email,Validators.required]
+  
     }),
-    password : new FormControl('', {
-        validators: [Validators.required]
+    passwords : new FormGroup({
+  
+        password : new FormControl('', {
+          validators: [Validators.required]
+        }),
+        
+        confirmPassword : new FormControl('',{
+          validators:[Validators.required],
+        }),
+        firstName : new FormControl('',{
+          validators:[Validators.required],
+        }),
+        lastName : new FormControl('',{
+          validators:[Validators.required],
     }),
-    confirmPassword : new FormControl('',{
-      validators:[Validators.required],
-    }),
-    firstName : new FormControl('',{
-      validators:[Validators.required],
-    }),
-    lastName : new FormControl('',{
-      validators:[Validators.required],
-    }),
-    street : new FormControl('',{
+    
+  }),
+
+    address : new FormGroup({
+   
+      street : new FormControl('',{
       validators:[Validators.required],
     }),
     number : new FormControl('',{
@@ -37,7 +46,10 @@ export class SignupComponent {
     city : new FormControl('',{
       validators:[Validators.required],
     }),
-    role : new FormControl<'student' |'teacher' | 'employee' | 'founder' |'other'> ('student',
+  
+  }),
+    
+  role : new FormControl<'student' |'teacher' | 'employee' | 'founder' |'other'> ('student',
     {
       validators : [Validators.required]
     }),
