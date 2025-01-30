@@ -16,8 +16,16 @@ export class LoginComponent {
 
   constructor(){
     afterNextRender(() => {
+      const saved = window.localStorage.getItem('login');  
+      if(saved){
+        const loadedData = JSON.parse(saved);
+        const savedEmail = loadedData.email;
+        setTimeout(()=> {
+        this.form()?.controls['email'].setValue(savedEmail);},1);
+      }
+      JSON.parse
       const subscription = this.form()?.valueChanges?.pipe(debounceTime(500)).subscribe({
-        next : (value) => window.localStorage.setItem('loin',JSON.stringify({email:value.email}))
+        next : (value) => window.localStorage.setItem('login',JSON.stringify({email:value.email}))
         
       });
     });
@@ -35,3 +43,14 @@ export class LoginComponent {
     }
 }
 
+// import { Component } from '@angular/core';
+
+// @Component({
+//   selector: 'app-login',
+//   standalone: true,
+//   templateUrl: './login.component.html',
+//   styleUrl: './login.component.css',
+// })
+// export class LoginComponent {
+//   form
+// }
