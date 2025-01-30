@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, afterNextRender, inject, viewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,17 @@ import { FormsModule, NgForm } from '@angular/forms';
 })
 export class LoginComponent {
   
+  private form = viewChild<NgForm>('form');
+  private destroyRef = inject(DestroyRef)
+
+  constructor(){
+    afterNextRender(() => {
+      const subscription = this.form()?.valueChanges?.subscribe({
+        next : (value) => console.log(value)
+        
+      });
+    });
+  }
   onsubmit(formData:NgForm)
   {
       if(formData.form.invalid){
