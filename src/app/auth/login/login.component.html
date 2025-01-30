@@ -6,6 +6,7 @@
       <label for="email">Email</label>
       <input id="email" type="email" name = "email" 
       ngModel 
+      email
       required  
       #email = "ngModel"
       />
@@ -16,12 +17,11 @@
       <input id="password" type="password" name = "password" 
       ngModel 
       required 
-      email
       minlength="6" 
       #password = "ngModel" />
     </div>
 
-    <button class="button">Login</button>
+    <button class="button">Login<S/button>
   </div>
   @if(email.touched && email.dirty && email.invalid)
   {
