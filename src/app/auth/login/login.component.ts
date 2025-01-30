@@ -65,7 +65,7 @@ export class LoginComponent {
   get emailIsInvalid(){
     return this.form.controls.email.touched && this.form.controls.email.dirty && this.form.controls.email
   }
-  get paswordIsInvalid(){
+  get passwordIsInvalid(){
     return this.form.controls.password.touched && this.form.controls.password.dirty && this.form.value.password
   }
   onSubmit(){
