@@ -1,5 +1,6 @@
 import { Component, DestroyRef, afterNextRender, inject, viewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import {debounceTime,pipe} from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +16,8 @@ export class LoginComponent {
 
   constructor(){
     afterNextRender(() => {
-      const subscription = this.form()?.valueChanges?.subscribe({
-        next : (value) => console.log(value)
+      const subscription = this.form()?.valueChanges?.pipe(debounceTime(500)).subscribe({
+        next : (value) => window.localStorage.setItem('loin',JSON.stringify({email:value.email}))
         
       });
     });
