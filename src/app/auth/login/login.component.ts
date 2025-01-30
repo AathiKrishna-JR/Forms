@@ -69,17 +69,35 @@ function emailIsUnique(controls:AbstractControl){
   styleUrl: './login.component.css',
 })
 export class LoginComponent implements OnInit {
+  
+  
   private destroyRef = inject(DestroyRef)
+  
+  
   form = new FormGroup({
+  
     email : new FormControl('',{
       validators:[ Validators.email,Validators.required],
       asyncValidators : [emailIsUnique],
     }),
+  
     password: new FormControl('',{
       validators : [Validators.required,Validators.minLength(6),isContainQuestionMark],
     })
   });
-  ngOnInit(){
+  
+  
+  
+ ngOnInit(){
+  const savedForm = window.localStorage.getItem('save-form')
+  if(savedForm){
+            const loadedData = JSON.parse(savedForm);
+            this.form.patchValue({
+            email: loadedData.email,
+          });
+   
+          }
+
     const subscription =this.form.valueChanges.pipe(debounceTime(500)).subscribe({
       next : value =>{
         window.localStorage.setItem(
@@ -90,12 +108,15 @@ export class LoginComponent implements OnInit {
     });
     this.destroyRef.onDestroy(()=>subscription.unsubscribe());
   }
+  
   get emailIsInvalid(){
     return this.form.controls.email.touched && this.form.controls.email.dirty && this.form.controls.email
   }
+  
   get passwordIsInvalid(){
     return this.form.controls.password.touched && this.form.controls.password.dirty && this.form.value.password
   }
+  
   onSubmit(){
     const enteredEmail = this.form.value.email;
     const enteredPassword = this.form.value.password;
