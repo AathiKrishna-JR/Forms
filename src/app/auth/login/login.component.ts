@@ -43,14 +43,21 @@
 //     }
 // }
 
-import { Component } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { debounceTime, of } from 'rxjs';
 
 function isContainQuestionMark(control : AbstractControl){
   if(control.value.includes('?')){
     return null;
   }
   return {notContainQuestionMark: true};
+}
+function emailIsUnique(controls:AbstractControl){
+  if(controls.value !== 'test@example.com'){
+    return of(null);
+  }
+  return of({notUnique: true});
 }
 
 
@@ -61,15 +68,28 @@ function isContainQuestionMark(control : AbstractControl){
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  private destroyRef = inject(DestroyRef)
   form = new FormGroup({
     email : new FormControl('',{
       validators:[ Validators.email,Validators.required],
+      asyncValidators : [emailIsUnique],
     }),
     password: new FormControl('',{
       validators : [Validators.required,Validators.minLength(6),isContainQuestionMark],
     })
   });
+  ngOnInit(){
+    const subscription =this.form.valueChanges.pipe(debounceTime(500)).subscribe({
+      next : value =>{
+        window.localStorage.setItem(
+          'save-form',
+          JSON.stringify({ email : value.email }));
+      },
+
+    });
+    this.destroyRef.onDestroy(()=>subscription.unsubscribe());
+  }
   get emailIsInvalid(){
     return this.form.controls.email.touched && this.form.controls.email.dirty && this.form.controls.email
   }
@@ -79,7 +99,7 @@ export class LoginComponent {
   onSubmit(){
     const enteredEmail = this.form.value.email;
     const enteredPassword = this.form.value.password;
-      console.log();
+      console.log(enteredEmail,enteredPassword);
       
   }
 }
