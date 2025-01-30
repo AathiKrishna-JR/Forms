@@ -9,7 +9,8 @@ import { FormsModule, NgForm } from '@angular/forms';
   imports : [FormsModule]
 })
 export class LoginComponent {
-  onSubmit(formData:NgForm)
+  
+  onsubmit(formData:NgForm)
   {
       if(formData.form.invalid){
             return;
