@@ -16,6 +16,22 @@ export class SignupComponent {
     password : new FormControl('', {
         validators: [Validators.minLength(6),Validators.required]
     }),
+    confirmPassword : new FormControl('',{
+      validators:[Validators.minLength(6),Validators.required],
+    }),
+    firstName : new FormControl('',{
+      validators:[Validators.minLength(6),Validators.required],
+    }),
+    lastName : new FormControl('',{
+      validators:[Validators.minLength(6),Validators.required],
+    }),
+    street : new FormControl('',{
+      validators:[Validators.minLength(6),Validators.required],
+    }),
+    postalCode : new FormControl('',{
+      validators:[Validators.minLength(6),Validators.required],
+    }),
+   
   });
   onReset(){
     this.form.reset();
