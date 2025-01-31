@@ -19,7 +19,9 @@
 }
 
 .sign-up{
+  justify-content: center; 
   text-align: center;
+  background-color: transparent;
   color: #9cbaba;
   border: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
