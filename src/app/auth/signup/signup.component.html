@@ -17,11 +17,11 @@
       <label for="confirm-password">Confirm Password</label>
       <input id="confirm-password" type="password" formControlName="confirmPassword"/>
     </div>
-    @if(! form.get("password")){
+    <div *ngIf="form.get('passwords')?.errors?.passwordsDoNotMatch" class="error">
     <div class="error">
       Passwords do not match.
     </div>
-  }
+    
   </div>
 
   <hr/>
