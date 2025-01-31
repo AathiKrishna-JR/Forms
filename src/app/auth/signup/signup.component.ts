@@ -63,6 +63,7 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, ReactiveFormsModule, Validators, FormArray } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { of } from 'rxjs';
 
 // Custom Async Validator to Check if the Email Already Exists
@@ -78,7 +79,7 @@ function emailExistsValidator(control: AbstractControl) {
   standalone: true,
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
-  imports: [ReactiveFormsModule,NgIf]
+  imports: [ReactiveFormsModule,NgIf,RouterLink]
 })
 export class SignupComponent {
   form = new FormGroup({
