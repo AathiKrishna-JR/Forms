@@ -5,12 +5,10 @@
   <div class="control">
     <label for="email">Email</label>
     <input id="email" type="email" formControlName="email"/>
-  </div>
-  <div>
-  @if (form.get('passwords')?.errors?.['emailNotUnique'] && form.get('email')?.touched) {
-    <p class="error-message">Passwords do not match!</p>
-  }
-</div>
+    <div *ngIf="form.errors?.['emailNotUnique']" class="error">
+      <p>Not Unique.</p>
+    </div>
+
 
   <div formGroupName="passwords">
     <div class="control">
