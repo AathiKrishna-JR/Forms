@@ -2,7 +2,7 @@
   align-items: flex-end;
 }
 
-  .control {
+.control {
     width: 100%;
     display: flex;
     justify-content: center; /* Centers the button */
@@ -16,6 +16,11 @@
   display: block;
   margin: auto; /* Centers the button */
   text-align: center;
+}
+
+.signup{
+  text-align: center;
+  color: #9cbaba;
 }
 
 h2 {
