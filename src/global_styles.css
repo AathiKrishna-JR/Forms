@@ -46,7 +46,7 @@ form {
     animation: fadeInForm 0.4s ease-in-out;
 }
 
-@keyframes fadeInForm {
+/* @keyframes fadeInForm {
     from {
         opacity: 0;
         transform: translateY(30px);
@@ -55,7 +55,7 @@ form {
         opacity: 1;
         transform: translateY(0);
     }
-}
+} */
 
 .control label {
     font-size: 0.9rem;
@@ -88,7 +88,7 @@ form {
     font-size: 1rem;
     border-radius: 6px;
     border: none;
-    background: linear-gradient(120deg, #0e8b74, #147b73);
+   /* background: linear-gradient(120deg, #0e8b74, #147b73);*/
     color: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -98,7 +98,7 @@ form {
 .button:hover,
 .button:focus {
     background: linear-gradient(120deg, #147b73, #0e8b74);
-    transform: translateY(-2px);
+    /*transform: translateY(-2px);*/
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
 }
 
