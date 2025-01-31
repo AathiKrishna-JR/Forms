@@ -6,9 +6,10 @@
     <label for="email">Email</label>
     <input id="email" type="email" formControlName="email"/>
     
-    @if (!form.errors?.['emailNotUnique'] ) {
+    @if (!form.errors?.['emailNotUnique'] && form.errors?.['emailNotUnique']?.touched ) {
       <p class="error-message"> Already exist</p>
     }
+
   </div>
 
   <div formGroupName="passwords">
