@@ -18,10 +18,9 @@
       <input id="confirm-password" type="password" formControlName="confirmPassword"/>
     </div>
     <div *ngIf="form.get('passwords')?.errors?.passwordsDoNotMatch" class="error">
-    <div class="error">
       Passwords do not match.
     </div>
-    
+
   </div>
 
   <hr/>
