@@ -23,6 +23,7 @@
   text-align: center;
   background-color: rgb(20, 123, 115);
   color: #9cbaba;
+  border: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   
