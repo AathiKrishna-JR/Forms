@@ -1,6 +1,15 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
+
+
+
+
+
+
+
+
+
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -69,7 +78,7 @@ export class SignupComponent {
   });
   onSubmit(){
     if(this.form.invalid){
-      
+
     }
   }
   onReset(){
