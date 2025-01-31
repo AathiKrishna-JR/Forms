@@ -1,6 +1,18 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { of } from 'rxjs';
+
+const storedUserData: { email: string | null | undefined, password: string | null | undefined }[] = [];
+
+function emailExistsValidator(control: AbstractControl) {
+  const email = control.value;
+  
+  const isDuplicate = storedUserData.some(user => user.email === email);
+  
+  return isDuplicate ? of({ emailNotUnique: true }) : of(null) 
+}
+
 
 function passwordMatchValidator(controls: AbstractControl) {
   const password = controls.get('password')?.value;
@@ -22,13 +34,14 @@ export class SignupComponent {
   
   form = new FormGroup({
     email: new FormControl('', {
-      validators: [Validators.email, Validators.required]
+      validators: [Validators.email, Validators.required],
+      asyncValidators : [emailExistsValidator]
     }),
 
     passwords: new FormGroup({
       password: new FormControl('', { validators: [Validators.required] }),
       confirmPassword: new FormControl('', { validators: [Validators.required] })
-    }, { validators: passwordMatchValidator }),  // Apply validator to the FormGroup
+    }, { validators: passwordMatchValidator }),  
 
     firstName: new FormControl('', { validators: [Validators.required] }),
     lastName: new FormControl('', { validators: [Validators.required] }),
@@ -53,18 +66,18 @@ export class SignupComponent {
     agree: new FormControl(false, { validators: [Validators.requiredTrue] })
   });
 
-  storedUserData: { email: string | null | undefined, password: string | null | undefined }[] = [];
+
 
   onSubmit() {
     if (this.form.invalid) {
       return;
     }
-
+    console.log(storedUserData);
     const email = this.form.get('email')?.value;
     const password = this.form.get('passwords.password')?.value;
     
-    this.storedUserData.push({ email, password });
-    console.log(this.storedUserData);
+    storedUserData.push({ email, password });
+    console.log(storedUserData);
     this.form.reset();
   }
 
