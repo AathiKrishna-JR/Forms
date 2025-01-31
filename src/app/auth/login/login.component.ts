@@ -41,94 +41,89 @@
 //       formData.form.reset();
     
 //     }
-// }
+// // }
 
-import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+
+
+
+
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { debounceTime, of } from 'rxjs';
-
-function isContainQuestionMark(control : AbstractControl){
-  if(control.value.includes('?')){
-    return null;
-  }
-  return {notContainQuestionMark: true};
-}
-function emailIsUnique(controls:AbstractControl){
-  if(controls.value !== 'test@example.com'){
-    return of(null);
-  }
-  return of({notUnique: true});
-}
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports : [ReactiveFormsModule,RouterLink],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  
-  
-  private destroyRef = inject(DestroyRef)
-  
-  
   form = new FormGroup({
-  
-     
-    email : new FormControl('',{
-      validators:[ Validators.email,Validators.required],
-      asyncValidators : [emailIsUnique],
+    email: new FormControl('', {
+      validators: [Validators.email, Validators.required],
     }),
-  
-    password: new FormControl('',{
-      validators : [Validators.required,Validators.minLength(6),isContainQuestionMark],
+    password: new FormControl('', {
+      validators: [Validators.required],
     }),
-
   });
-  
-  
-  
- ngOnInit(){
-  const savedForm = window.localStorage.getItem('save-form')
-  if(savedForm){
-            const loadedData = JSON.parse(savedForm);
-            this.form.patchValue({
-            email: loadedData.email,
-          });
-   
-          }
 
-  const subscription =this.form.valueChanges.pipe(debounceTime(500)).subscribe({
-      next : value =>{
+  loginError = false;
+
+  ngOnInit() {
+    const savedForm = window.localStorage.getItem('save-form');
+    if (savedForm) {
+      const loadedData = JSON.parse(savedForm);
+      this.form.patchValue({
+        email: loadedData.email,
+      });
+    }
+
+    const subscription = this.form.valueChanges.pipe(debounceTime(500)).subscribe({
+      next: (value) => {
         window.localStorage.setItem(
           'save-form',
-          JSON.stringify({ email : value.email }));
+          JSON.stringify({ email: value.email })
+        );
       },
-
     });
-  
   }
-  
 
-
-  get emailIsInvalid(){
-    return this.form.controls.email.touched && this.form.controls.email.dirty && this.form.controls.email
-  }
-  
-  
-  
-  get passwordIsInvalid(){
-    return this.form.controls.password.touched && this.form.controls.password.dirty && this.form.value.password
-  }
-  
-  
-  
-  onSubmit(){
+  onSubmit() {
     const enteredEmail = this.form.value.email;
     const enteredPassword = this.form.value.password;
-      console.log(this.form)
-      
+
+    // Get the stored user data from localStorage
+    const storedUserData = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = storedUserData.find(
+      (user: { email: string; password: string }) =>
+        user.email === enteredEmail && user.password === enteredPassword
+    );
+
+    if (user) {
+      console.log('Login successful');
+      this.loginError = false;
+      // Redirect user or perform other actions on successful login
+    } else {
+      console.log('Invalid credentials');
+      this.loginError = true; // Display error if credentials are incorrect
+    }
+  }
+
+  get emailIsInvalid() {
+    return (
+      this.form.controls.email.touched &&
+      this.form.controls.email.dirty &&
+      this.form.controls.email.invalid
+    );
+  }
+
+  get passwordIsInvalid() {
+    return (
+      this.form.controls.password.touched &&
+      this.form.controls.password.dirty &&
+      this.form.controls.password.invalid
+    );
   }
 }

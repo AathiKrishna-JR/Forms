@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <h2>Welcome on board!</h2>
   <p>We just need a little bit of data from you to get you started 🚀</p>
 
@@ -118,7 +118,120 @@
     <button type="submit" class="button">Sign up</button>
   </p>
 
-  <div *ngIf="form.invalid && form.touched" class="error">
-    <p>Form is invalid</p>
+  <div  class="error">
+    b
   </div>
+</form> -->
+
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>Welcome on board!</h2>
+  <p>We just need a little bit of data from you to get you started 🚀</p>
+
+  <div class="control">
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email"/>
+    
+    <p *ngIf="form.errors?.['emailNotUnique']" class="error-message">Email already exists!</p>
+  </div>
+
+  <div formGroupName="passwords">
+    <div class="control">
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password"/>
+    </div>
+
+    <div class="control">
+      <label for="confirm-password">Confirm Password</label>
+      <input id="confirm-password" type="password" formControlName="confirmPassword"/>
+    </div>
+    <p *ngIf="form.get('passwords')?.errors?.['passwordsDoNotMatch']" class="error-message">Password does not match!</p>
+  </div>
+
+  <hr/>
+
+  <div class="control-row">
+    <div class="control">
+      <label for="first-name">First Name</label>
+      <input id="first-name" type="text" formControlName="firstName"/>
+    </div>
+
+    <div class="control">
+      <label for="last-name">Last Name</label>
+      <input id="last-name" type="text" formControlName="lastName"/>
+    </div>
+  </div>
+
+  <fieldset formGroupName="address">
+    <legend>Your Address</legend>
+
+    <div class="control-row">
+      <div class="control">
+        <label for="street">Street</label>
+        <input id="street" type="text" formControlName="street"/>
+      </div>
+
+      <div class="control">
+        <label for="number">Number</label>
+        <input id="number" type="text" formControlName="number"/>
+      </div>
+    </div>
+
+    <div class="control-row">
+      <div class="control">
+        <label for="postal-code">Postal Code</label>
+        <input id="postal-code" type="text" formControlName="postalCode"/>
+      </div>
+
+      <div class="control">
+        <label for="city">City</label>
+        <input id="city" type="text" formControlName="city"/>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="control-row">
+    <div class="control">
+      <label for="role">What best describes your role?</label>
+      <select id="role" formControlName="role">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+        <option value="employee">Employee</option>
+        <option value="founder">Founder</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+  </div>
+
+  <fieldset formArrayName="source">
+    <legend>How did you find us?</legend>
+    <div class="control">
+      <input type="checkbox" id="google" formControlName="0"/>
+      <label for="google">Google</label>
+    </div>
+
+    <div class="control">
+      <input type="checkbox" id="friend" formControlName="1"/>
+      <label for="friend">Referred by a friend</label>
+    </div>
+
+    <div class="control">
+      <input type="checkbox" id="other" formControlName="2"/>
+      <label for="other">Other</label>
+    </div>
+  </fieldset>
+
+  <div class="control-row">
+    <div class="control">
+      <label>
+        <input type="checkbox" formControlName="agree"/>
+        I agree to the terms and conditions
+      </label>
+    </div>
+  </div>
+
+  <p class="form-actions">
+    <button type="button" class="button button-flat" (click)="onReset()">Reset</button>
+    <button type="submit" class="button">Sign up</button>
+  </p>
 </form>

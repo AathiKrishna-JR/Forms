@@ -32,7 +32,7 @@
       <p class="control-error">Invalid password entered - must be at least 6 characters long.</p>
   }
 </form> -->
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
   
   <h2>Login</h2>
 
@@ -44,12 +44,48 @@
     <input id="password" type="password" formControlName="password" placeholder="Enter your Password" />
   </div>
 
+  <-- Centered Login Button -->
+  <!-- <div class="control no-margin" >
+    <button class="button">Login</button>
+  </div> -->
+
+  <!-- "Don't have an account?" Button -->
+  <!-- <p>Don't have an account? </p><a routerLink = "/signup">Sign Up</a>
+
+</form>  -->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>Login</h2>
+
+  <div class="control no-margin">
+    <input
+      id="email"
+      type="email"
+      [formControl]="form.controls.email"
+      placeholder="Enter your Email"
+    />
+  </div>
+
+  <div class="control no-margin">
+    <input
+      id="password"
+      type="password"
+      formControlName="password"
+      placeholder="Enter your Password"
+    />
+  </div>
+
   <!-- Centered Login Button -->
-  <div class="control no-margin" >
+  <div class="control no-margin">
     <button class="button">Login</button>
   </div>
 
   <!-- "Don't have an account?" Button -->
-  <p>Don't have an account? </p><a routerLink = "/signup">Sign Up</a>
+  <p>Don't have an account? </p><a routerLink="/signup">Sign Up</a>
 
+  <!-- Error Message for Invalid Login -->
+  <p *ngIf="loginError" style="color: red; text-align: center;">
+    Invalid email or password.
+  </p>
 </form>
+
