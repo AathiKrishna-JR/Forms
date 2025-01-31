@@ -60,6 +60,7 @@
 //   }
 // }
 
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, ReactiveFormsModule, Validators, FormArray } from '@angular/forms';
 import { of } from 'rxjs';
@@ -77,7 +78,7 @@ function emailExistsValidator(control: AbstractControl) {
   standalone: true,
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
-  imports: [ReactiveFormsModule]
+  imports: [ReactiveFormsModule,NgIf]
 })
 export class SignupComponent {
   form = new FormGroup({

@@ -47,6 +47,7 @@
 
 
 
+import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -55,7 +56,7 @@ import { debounceTime } from 'rxjs';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink,NgIf],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
