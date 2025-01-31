@@ -5,6 +5,8 @@
 .control {
   flex: 1;
   margin-left: 175px;
+  padding-bottom:10px;
+  padding-top: 10px;
 }
 
 button {
