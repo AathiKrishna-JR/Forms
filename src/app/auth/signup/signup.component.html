@@ -5,7 +5,7 @@
   <div class="control">
     <label for="email">Email</label>
     <input id="email" type="email" formControlName="email"/>
-    <div *ngIf="form.errors?.['emailNotUnique']" class="error">
+    <div *ngIf="!form.errors?.['emailNotUnique']" class="error">
       <p>Not Unique.</p>
     </div>
   </div>
