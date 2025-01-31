@@ -45,6 +45,7 @@
 
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { debounceTime, of } from 'rxjs';
 
 function isContainQuestionMark(control : AbstractControl){
@@ -64,7 +65,7 @@ function emailIsUnique(controls:AbstractControl){
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports : [ReactiveFormsModule],
+  imports : [ReactiveFormsModule,RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
