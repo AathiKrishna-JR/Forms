@@ -1,36 +1,34 @@
-.control {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0;
+.control-row {
+  align-items: flex-end;
 }
+
+.control {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
 
 .button {
-  padding: 0.8rem 2rem;
+  padding: 0.6rem 1.75rem;
+  
   display: block;
-  margin: auto;
+  margin: auto; 
+  text-align: center;
+  justify-content: center; 
   text-align: center;
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #fff;
-  background: linear-gradient(45deg, #008f39, #00732a);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  
 }
-
-.button:hover,
-.button:active {
-  background: linear-gradient(45deg, #00732a, #00591f);
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+button:hover,
+button:active {
+  background-color: #077428;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
 }
 
 h2 {
-  color: #82c6c4;
+  color: #9cbaba;
   text-align: center;
-  font-size: 2rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
