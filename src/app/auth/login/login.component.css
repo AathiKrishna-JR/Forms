@@ -11,6 +11,8 @@
 
 .button {
   padding: 0.6rem 1.75rem;
+  justify-content: center; /* Centers the button */
+  align-items: center;
   display: block;
   margin: auto; /* Centers the button */
   text-align: center;
