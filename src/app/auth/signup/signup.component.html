@@ -18,7 +18,7 @@
       <input id="confirm-password" type="password" formControlName="confirmPassword"/>
     </div>
 
-    <div *ngIf="form.get('passwords')?.errors?.passwordsDoNotMatch" class="error">
+    <div @if(passwordMatchValidator()) class="error">
       Passwords do not match.
     </div>
   </div>
@@ -77,6 +77,7 @@
       </select>
     </div>
   </div>
+
 
   <fieldset formArrayName="source">
     <legend>How did you find us?</legend>
