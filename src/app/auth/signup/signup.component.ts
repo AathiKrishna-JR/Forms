@@ -1,11 +1,20 @@
 import { Component } from '@angular/core';
-import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { of } from 'rxjs';
 
 
 
 
 
+function passwordMatchValidator(controls: AbstractControl) {
+  const password = controls.get('password')?.value;
+  const confirmPassword = controls.get('confirmPassword')?.value;
 
+  if (password && confirmPassword && password === confirmPassword) {
+    return of(null);
+  }
+  return of({ passwordsDoNotMatch: true }); 
+}
 
 
 
@@ -30,8 +39,10 @@ export class SignupComponent {
         }),
         
         confirmPassword : new FormControl('',{
-          validators:[Validators.required],
+          validators:[Validators.required,passwordMatchValidator],
         }),
+
+    }),
         firstName : new FormControl('',{
           validators:[Validators.required],
         }),
@@ -39,7 +50,7 @@ export class SignupComponent {
           validators:[Validators.required],
     }),
     
-  }),
+ 
 
     address : new FormGroup({
    

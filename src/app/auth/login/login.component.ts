@@ -61,7 +61,6 @@ function emailIsUnique(controls:AbstractControl){
   return of({notUnique: true});
 }
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
