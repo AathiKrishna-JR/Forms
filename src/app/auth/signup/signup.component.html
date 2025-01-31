@@ -21,7 +21,7 @@
       <label for="confirm-password">Confirm Password</label>
       <input id="confirm-password" type="password" formControlName="confirmPassword"/>
     </div>
-    @if (form.get('passwords')?.errors?.['passwordsDoNotMatch'] && !form.get('passwords.confirmPassword')?.touched) {
+    @if (form.get('passwords')?.errors?.['passwordsDoNotMatch'] && form.get('passwords.confirmPassword')?.touched) {
       <p class="error-message">Passwords do not match!</p>
     }
     
