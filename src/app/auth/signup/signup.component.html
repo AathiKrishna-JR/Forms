@@ -17,7 +17,7 @@
       <label for="confirm-password">Confirm Password</label>
       <input id="confirm-password" type="password" formControlName="confirmPassword"/>
     </div>
-    <div *ngIf="form.get('passwords')?.errors?.passwordsDoNotMatch" class="error">
+    <div *ngIf="form.get('passwords')?.errors?.['passwordsDoNotMatch']" class="error">
       Passwords do not match.
     </div>
 
