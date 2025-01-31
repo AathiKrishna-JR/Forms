@@ -66,7 +66,6 @@ import { AbstractControl, FormGroup, FormControl, ReactiveFormsModule, Validator
 import { RouterLink } from '@angular/router';
 import { of } from 'rxjs';
 
-// Custom Async Validator to Check if the Email Already Exists
 function emailExistsValidator(control: AbstractControl) {
   const email = control.value;
   const storedUserData = JSON.parse(localStorage.getItem('users') || '[]');
@@ -118,7 +117,7 @@ export class SignupComponent {
 
   });
 
-  // Custom Validator to Ensure Passwords Match
+
   passwordMatchValidator(controls: AbstractControl) {
     const password = controls.get('password')?.value;
     const confirmPassword = controls.get('confirmPassword')?.value;
@@ -127,7 +126,7 @@ export class SignupComponent {
       : { passwordsDoNotMatch: true };
   }
 
-  // Handle Form Submission
+
   onSubmit() {
     if (this.form.invalid) {
       return;
@@ -138,13 +137,12 @@ export class SignupComponent {
       password: formData.passwords?.password,
     };
 
-    // Get existing users from localStorage and store new user
     const storedUserData = JSON.parse(localStorage.getItem('users') || '[]');
     storedUserData.push(userData);
     localStorage.setItem('users', JSON.stringify(storedUserData));
 
     console.log('User Data:', userData);
-    this.form.reset(); // Reset the form
+    this.form.reset(); 
   }
   
   onReset() {
