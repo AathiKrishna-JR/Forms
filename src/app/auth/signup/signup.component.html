@@ -6,8 +6,8 @@
     <label for="email">Email</label>
     <input id="email" type="email" formControlName="email"/>
     
-    @if (form.errors?.['emailNotUnique'] && form.get('email')?.touched) {
-      <p class="error-message">Passwords do not match!</p>
+    @if (!form.errors?.['emailNotUnique'] ) {
+      <p class="error-message"> Already exist</p>
     }
   </div>
 
@@ -22,7 +22,7 @@
       <input id="confirm-password" type="password" formControlName="confirmPassword"/>
     </div>
     @if (form.get('passwords')?.errors?.['passwordsDoNotMatch'] && form.get('passwords.confirmPassword')?.touched) {
-      <p class="error-message">Passwords do not match!</p>
+      <p class="error-message">Password not matched!</p>
     }
     
   </div>

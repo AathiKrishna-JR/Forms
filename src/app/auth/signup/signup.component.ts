@@ -72,7 +72,7 @@ export class SignupComponent {
     if (this.form.invalid) {
       return;
     }
-    console.log(storedUserData);
+    console.log(this.form);
     const email = this.form.get('email')?.value;
     const password = this.form.get('passwords.password')?.value;
     
