@@ -5,6 +5,10 @@
   <div class="control">
     <label for="email">Email</label>
     <input id="email" type="email" formControlName="email"/>
+    <div *ngIf="form.errors?.['emailNotUnique']" class="error">
+      Not Unique.
+    </div>
+
   </div>
 
   <div formGroupName="passwords">
