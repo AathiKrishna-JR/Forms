@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
     const enteredEmail = this.form.value.email;
     const enteredPassword = this.form.value.password;
 
-    // Get the stored user data from localStorage
+
     const storedUserData = JSON.parse(localStorage.getItem('users') || '[]');
     const user = storedUserData.find(
       (user: { email: string; password: string }) =>
@@ -105,10 +105,10 @@ export class LoginComponent implements OnInit {
     if (user) {
       console.log('Login successful');
       this.loginError = false;
-      // Redirect user or perform other actions on successful login
+  
     } else {
       console.log('Invalid credentials');
-      this.loginError = true; // Display error if credentials are incorrect
+    
     }
   }
 
