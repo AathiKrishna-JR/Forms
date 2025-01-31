@@ -13,6 +13,7 @@
   padding: 0.6rem 1.75rem;
   display: block;
   margin: auto; /* Centers the button */
+  text-align: center;
 }
 
 h2 {
