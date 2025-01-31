@@ -17,7 +17,7 @@
       <label for="confirm-password">Confirm Password</label>
       <input id="confirm-password" type="password" formControlName="confirmPassword"/>
     </div>
-  @if(passwordMatchValidator()){
+  @if(passwordMatchValidator){
     <div class="error">
       Passwords do not match.
     </div>
