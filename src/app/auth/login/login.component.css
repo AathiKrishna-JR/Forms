@@ -9,9 +9,9 @@
   padding-top: 10px;
 }
 
-button {
+.button {
   padding: 0.6rem 1.75rem;
-  
+  flex: 1;
 }
 
 h2{
