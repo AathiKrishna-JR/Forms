@@ -87,10 +87,19 @@ export class SignupComponent {
 
       }),
   });
-  onSubmit(){
-    if(this.form.invalid){
 
-    }
+  storedUserData: { email: string|null|undefined, password: string|null|undefined }[] = [];
+
+  onSubmit(){
+    
+      if (this.form.invalid) {
+        return;
+      }
+       const email = this.form.get('email')?.value;
+      const password = this.form.get('passwords')?.get('password')?.value;
+      this.storedUserData.push({ email:email,password: password });
+      console.log(this.storedUserData);
+      this.form.reset();
   }
   onReset(){
     this.form.reset();

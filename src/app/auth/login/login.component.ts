@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit {
   
   form = new FormGroup({
   
+     
     email : new FormControl('',{
       validators:[ Validators.email,Validators.required],
       asyncValidators : [emailIsUnique],
@@ -83,7 +84,8 @@ export class LoginComponent implements OnInit {
   
     password: new FormControl('',{
       validators : [Validators.required,Validators.minLength(6),isContainQuestionMark],
-    })
+    }),
+
   });
   
   
@@ -98,7 +100,7 @@ export class LoginComponent implements OnInit {
    
           }
 
-    const subscription =this.form.valueChanges.pipe(debounceTime(500)).subscribe({
+  const subscription =this.form.valueChanges.pipe(debounceTime(500)).subscribe({
       next : value =>{
         window.localStorage.setItem(
           'save-form',
@@ -109,18 +111,24 @@ export class LoginComponent implements OnInit {
     this.destroyRef.onDestroy(()=>subscription.unsubscribe());
   }
   
+
+
   get emailIsInvalid(){
     return this.form.controls.email.touched && this.form.controls.email.dirty && this.form.controls.email
   }
+  
+  
   
   get passwordIsInvalid(){
     return this.form.controls.password.touched && this.form.controls.password.dirty && this.form.value.password
   }
   
+  
+  
   onSubmit(){
     const enteredEmail = this.form.value.email;
     const enteredPassword = this.form.value.password;
-      console.log(enteredEmail,enteredPassword);
+      console.log(this.form)
       
   }
 }
