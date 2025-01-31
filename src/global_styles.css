@@ -1,4 +1,4 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Lato:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -171,8 +171,8 @@ hr {
 .button-flat:focus {
   background-color: transparent;
   color: #869999;
-} */
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Lato:wght@400;700&display=swap");
+}
+/* @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Lato:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -269,4 +269,4 @@ legend {
 hr {
   margin: 1.5rem 0;
   border: 1px solid #8b668b;
-}
+} */
