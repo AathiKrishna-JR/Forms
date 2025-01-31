@@ -2,14 +2,13 @@
   align-items: flex-end;
 }
 
-.control {
-  flex: 1;
-  margin-left: 175px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  justify-content: center; /* Centers the button */
-  align-items: center;
-}
+  .control {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centers the button */
+    align-items: center;
+    padding: 10px 0;
+  }
 
 .button {
   padding: 0.6rem 1.75rem;
