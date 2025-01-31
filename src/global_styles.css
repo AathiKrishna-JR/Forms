@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Lato:wght@400;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Lato:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -171,4 +171,102 @@ hr {
 .button-flat:focus {
   background-color: transparent;
   color: #869999;
+} */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Lato:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #c7a2c7, #a7b5c7);
+  color: #2f2f2f;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  width: 90%;
+  max-width: 40rem;
+  padding: 2rem;
+  background: linear-gradient(180deg, #d8a7b1, #c7a2c7);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h2 {
+  font-family: "Quicksand", sans-serif;
+  color: #8b668b;
+  margin-bottom: 1rem;
+}
+
+.control {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #5a3e5a;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #8b668b;
+  background-color: #f2e7f2;
+  color: #4a3c4a;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 8px;
+  border: none;
+  background: #8b668b;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #6b486b;
+}
+
+.error {
+  color: #a94442;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+fieldset {
+  border: 2px solid #8b668b;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+legend {
+  font-weight: bold;
+  color: #6b486b;
+}
+
+hr {
+  margin: 1.5rem 0;
+  border: 1px solid #8b668b;
 }
