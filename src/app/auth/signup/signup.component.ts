@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -15,7 +16,7 @@ function passwordMatchValidator(controls: AbstractControl) {
   standalone: true,
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
-  imports: [ReactiveFormsModule]
+  imports: [ReactiveFormsModule,NgIf]
 })
 export class SignupComponent {
   
