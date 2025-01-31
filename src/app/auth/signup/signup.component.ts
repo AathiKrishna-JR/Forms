@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -53,12 +53,25 @@ export class SignupComponent {
     {
       validators : [Validators.required]
     }),
-      agree : new FormControl(false,
+      
+    source : new FormArray([
+      new FormControl(false),
+      new FormControl(false),
+      new FormControl(false),
+
+    ]),
+    
+    agree : new FormControl(false,
       {
         validators : [Validators.required]
 
       }),
   });
+  onSubmit(){
+    if(this.form.invalid){
+      
+    }
+  }
   onReset(){
     this.form.reset();
   }
