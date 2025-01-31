@@ -5,15 +5,27 @@
 .control {
   flex: 1;
   margin-left: 175px;
-  padding-bottom:10px;
+  padding-bottom: 10px;
   padding-top: 10px;
 }
 
 .button {
   padding: 0.6rem 1.75rem;
-
+  display: block;
+  margin: auto; /* Centers the button */
 }
 
-h2{
+h2 {
   text-align: center;
+}
+
+/* Centering the text button */
+.text-button {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: blue;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
