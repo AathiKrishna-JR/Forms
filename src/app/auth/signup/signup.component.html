@@ -17,10 +17,11 @@
       <label for="confirm-password">Confirm Password</label>
       <input id="confirm-password" type="password" formControlName="confirmPassword"/>
     </div>
-
-    <div @if(passwordMatchValidator()) class="error">
+  @if(passwordMatchValidator()){
+    <div class="error">
       Passwords do not match.
     </div>
+  }
   </div>
 
   <hr/>
