@@ -2,10 +2,6 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { of } from 'rxjs';
 
-
-
-
-
 function passwordMatchValidator(controls: AbstractControl) {
   const password = controls.get('password')?.value;
   const confirmPassword = controls.get('confirmPassword')?.value;
@@ -17,8 +13,6 @@ function passwordMatchValidator(controls: AbstractControl) {
 }
 
 
-
-
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -27,11 +21,14 @@ function passwordMatchValidator(controls: AbstractControl) {
   imports:[ReactiveFormsModule]
 })
 export class SignupComponent {
+  
   form = new FormGroup({
     email : new FormControl('',{
       validators: [Validators.email,Validators.required]
   
     }),
+
+
     passwords : new FormGroup({
   
         password : new FormControl('', {
@@ -39,7 +36,7 @@ export class SignupComponent {
         }),
         
         confirmPassword : new FormControl('',{
-          validators:[Validators.required,passwordMatchValidator],
+          validators:[Validators.required ,passwordMatchValidator],
         }),
 
     }),
@@ -50,19 +47,20 @@ export class SignupComponent {
           validators:[Validators.required],
     }),
     
- 
-
     address : new FormGroup({
    
       street : new FormControl('',{
       validators:[Validators.required],
     }),
+    
     number : new FormControl('',{
       validators:[Validators.required],
     }),
+    
     postalCode : new FormControl('',{
       validators:[Validators.required],
     }),
+    
     city : new FormControl('',{
       validators:[Validators.required],
     }),
@@ -92,15 +90,14 @@ export class SignupComponent {
 
   onSubmit(){
     
-      if (this.form.invalid) {
-        return;
-      }
+     
        const email = this.form.get('email')?.value;
       const password = this.form.get('passwords')?.get('password')?.value;
       this.storedUserData.push({ email:email,password: password });
       console.log(this.storedUserData);
       this.form.reset();
   }
+
   onReset(){
     this.form.reset();
   }
