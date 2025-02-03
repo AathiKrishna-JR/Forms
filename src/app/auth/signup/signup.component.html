@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <h2>Welcome on board!</h2>
   <p>We just need a little bit of data from you to get you started 🚀</p>
 
@@ -115,4 +115,139 @@
     <button type="submit" class="button">Sign up</button>
   </p>
   <a routerLink="/">Back</a>>
+</form> -->
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>Welcome on board!</h2>
+  <p>We just need a little bit of data from you to get you started 🚀</p>
+
+  <div class="control">
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" />
+    
+    @if (emailError) {
+      <p class="error-message">Already exists</p>
+    }
+  </div>
+
+  <div formGroupName="passwords">
+    <div class="control">
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" />
+    </div>
+
+    <div class="control">
+      <label for="confirm-password">Confirm Password</label>
+      <input id="confirm-password" type="password" formControlName="confirmPassword" />
+    </div>
+
+    @if (passwordMismatch) {
+      <p class="error-message">Passwords do not match!</p>
+    }
+  </div>
+
+  <div class="control">
+    <label for="first-name">First Name</label>
+    <input id="first-name" type="text" formControlName="firstName" />
+    @if (form.controls.firstName.invalid && form.controls.firstName.touched) {
+      <p class="error-message">First name is required</p>
+    }
+  </div>
+
+  <div class="control">
+    <label for="last-name">Last Name</label>
+    <input id="last-name" type="text" formControlName="lastName" />
+    @if (form.controls.lastName.invalid && form.controls.lastName.touched) {
+      <p class="error-message">Last name is required</p>
+    }
+  </div>
+
+  <fieldset formGroupName="address">
+    <legend>Your Address</legend>
+
+    <div class="control-row">
+      <div class="control">
+        <label for="street">Street</label>
+        <input id="street" type="text" formControlName="street" />
+        @if (form.controls.address.get('street')?.invalid && form.controls.address.get('street')?.touched) {
+          <p class="error-message">Street is required</p>
+        }
+      </div>
+
+      <div class="control">
+        <label for="number">Number</label>
+        <input id="number" type="text" formControlName="number" />
+        @if (form.controls.address.get('number')?.invalid && form.controls.address.get('number')?.touched) {
+          <p class="error-message">Number is required</p>
+        }
+      </div>
+    </div>
+
+    <div class="control-row">
+      <div class="control">
+        <label for="postal-code">Postal Code</label>
+        <input id="postal-code" type="text" formControlName="postalCode" />
+        @if (form.controls.address.get('postalCode')?.invalid && form.controls.address.get('postalCode')?.touched) {
+          <p class="error-message">Postal Code is required</p>
+        }
+      </div>
+
+      <div class="control">
+        <label for="city">City</label>
+        <input id="city" type="text" formControlName="city" />
+        @if (form.controls.address.get('city')?.invalid && form.controls.address.get('city')?.touched) {
+          <p class="error-message">City is required</p>
+        }
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="control-row">
+    <div class="control">
+      <label for="role">What best describes your role?</label>
+      <select id="role" formControlName="role">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+        <option value="employee">Employee</option>
+        <option value="founder">Founder</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+  </div>
+
+  <fieldset formArrayName="source">
+    <legend>How did you find us?</legend>
+    
+    <div class="control">
+      <input type="checkbox" id="google" formControlName="0" />
+      <label for="google">Google</label>
+    </div>
+
+    <div class="control">
+      <input type="checkbox" id="friend" formControlName="1" />
+      <label for="friend">Referred by a friend</label>
+    </div>
+
+    <div class="control">
+      <input type="checkbox" id="other" formControlName="2" />
+      <label for="other">Other</label>
+    </div>
+  </fieldset>
+
+  @if (atLeastOneChecked) {
+    <p class="error-message">Please select at least one option.</p>
+  }
+
+  <div class="control">
+    <label>
+      <input type="checkbox" formControlName="agree" />
+      I agree to the terms and conditions
+    </label>
+  </div>
+
+  <div class="form-actions">
+    <button type="button" class="button button-flat" (click)="onReset()">Reset</button>
+    <button type="submit" class="button">Sign up</button>
+  </div>
+
+  <a routerLink="/">Back</a>
 </form>
