@@ -124,7 +124,7 @@
     <label for="email">Email</label>
     <input id="email" type="email" formControlName="email" />
     
-    @if (emailError) {
+    @if (emailError()) {
       <p class="error-message">Already exists</p>
     }
   </div>
@@ -140,7 +140,7 @@
       <input id="confirm-password" type="password" formControlName="confirmPassword" />
     </div>
 
-    @if (passwordMismatch) {
+    @if (passwordMismatch()) {
       <p class="error-message">Passwords do not match!</p>
     }
   </div>

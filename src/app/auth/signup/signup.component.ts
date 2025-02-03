@@ -49,13 +49,13 @@ export class SignupComponent {
     agree: new FormControl(false, { validators: [Validators.requiredTrue], nonNullable: true })
   });
 
-  // ✅ Fix: Ensure `computed` always returns a boolean using `!!`
+
   emailError: Signal<boolean> = computed(() => !!this.form.get('email')?.hasError('emailNotUnique'));
   passwordMismatch: Signal<boolean> = computed(() => !!this.form.get('passwords')?.hasError('passwordsDoNotMatch'));
   atLeastOneChecked: Signal<boolean> = computed(() => this.form.get('source')?.value.some((val: boolean) => val) === false);
 
   constructor(private router: Router) {
-    // Effect to track and update checkbox validation in real time
+
     effect(() => {
       if (this.atLeastOneChecked()) {
         this.form.get('source')?.setErrors({ required: true });
@@ -73,7 +73,7 @@ export class SignupComponent {
       : { passwordsDoNotMatch: true };
   }
 
-  // ✅ Fixed: Properly formatted async validator
+ 
   emailExistsValidator(): AsyncValidatorFn {
     return (control: AbstractControl) => {
       return new Promise<ValidationErrors | null>((resolve) => {
