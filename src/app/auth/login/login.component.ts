@@ -108,7 +108,7 @@ export class LoginComponent implements OnInit {
   
     } else {
       console.log('Invalid credentials');
-    
+      this.loginError = true;
     }
   }
 
