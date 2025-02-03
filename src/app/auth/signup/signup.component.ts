@@ -2,7 +2,6 @@ import { NgIf } from '@angular/common';
 import { Component, Signal, computed, effect, signal } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, ReactiveFormsModule, Validators, FormArray, ValidationErrors, AsyncValidatorFn } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -81,7 +80,7 @@ export class SignupComponent {
         const email = control.value;
         const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
         const isDuplicate = storedUsers.some((user: { email: string }) => user.email === email);
-        resolve(isDuplicate ? of({ emailNotUnique: true }) : of(null));
+        resolve(isDuplicate ? { emailNotUnique: true } : null);
       });
     };
   }
